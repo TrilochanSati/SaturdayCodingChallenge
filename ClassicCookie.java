@@ -13,7 +13,9 @@ public class ClassicCookie {
         if(matrix[i][j]==1){
             count++;
             matrix[i][j]=0;
+            column_minus(i,j);
             row_minus(i,j);
+
             column_plus(i,j);
             row_plus(i,j);
             return count;
@@ -29,7 +31,7 @@ public class ClassicCookie {
 
     public static void row_minus(int i,int j){
         i--;
-        if(i>0 && i<r && (matrix[i][j]!=0)){
+        if(i>=0 && i<r && (matrix[i][j]!=0)){
             operation(i,j);
 
         }
@@ -37,34 +39,40 @@ public class ClassicCookie {
 
 
     }
+    public static void column_minus(int i,int j){
+        j--;
+        if(j>=0 && j<c && (matrix[i][j]!=0)){
+            operation(i,j);
+
+        }
 
 
+
+    }
     public static void column_plus(int i,int j){
         j++;
-        if(j>0 && j<c && (matrix[i][j]!=0)){
+        if(j>=0 && j<c && (matrix[i][j]!=0)){
             operation(i,j);
 
         }
 
 
 
+
+
     }
-
-
-    public static void row_plus(int i,int j){
+    public static void row_plus(int i,int j) {
         i++;
-        if(i>0 && i<r && (matrix[i][j]!=0)){
-            operation(i,j);
+        if (i>=0 && i < r && (matrix[i][j] != 0)) {
+            operation(i, j);
 
         }
-
-
-
     }
 
 
 
-    public static void main(String[] args) {
+
+        public static void main(String[] args) {
 
 
 
@@ -77,7 +85,7 @@ public class ClassicCookie {
 
         for (int i = 0; i < r; i++)
             for (int j = 0; j < c; j++) {
-                matrix[i][j] = scan.nextInt();
+                matrix[i][j] = (int)(Math.random()*2);
 
             }
         System.out.println("Matrix Entered");
@@ -91,6 +99,8 @@ public class ClassicCookie {
 
         }
 
+        System.out.println("The Number of line");
+
 
         for (int i = 0; i < r; i++) {
             for (int j = 0; j <c; j++) {
@@ -99,7 +109,6 @@ public class ClassicCookie {
 
                int k=operation(i,j);
                if(k>0){
-                   System.out.println("The Number of line");
                    System.out.print(k+",");
                }
             }
